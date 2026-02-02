@@ -9,7 +9,7 @@ ThisBuild / scalafmtOnCompile := true
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
 ThisBuild / scalaVersion       := "2.13.17"
-ThisBuild / crossScalaVersions := Seq("2.13.17", "3.1.3")
+ThisBuild / crossScalaVersions := Seq("2.13.17", "3.7.4")
 
 val commonSettings = Seq(
   scalacOptions := Seq(
