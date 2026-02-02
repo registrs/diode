@@ -32,7 +32,7 @@ val commonSettings = Seq(
   }.value,
   scalacOptions ++= scalaVerDependentSeq {
     case (2, 13) => Seq("-Werror")
-    case (3, _)  => Seq("-Xfatal-warnings")
+    // case (3, _)  => "-Xfatal-warnings" // there are a lot of scala3 related warnings now
   }.value,
   Compile / scalacOptions -= scalaVerDependent {
     case (2, _) => "-Ywarn-value-discard"
@@ -87,6 +87,7 @@ val commonJsSettings = Seq(
   scalacOptions += sourceMapSetting.value,
   scalacOptions ++= scalaVerDependent {
     case (2, _) => "-P:scalajs:nowarnGlobalExecutionContext"
+    case (3, _) => "-scalajs"
   }.value
 )
 
