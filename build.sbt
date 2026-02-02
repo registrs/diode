@@ -87,7 +87,6 @@ val commonJsSettings = Seq(
   scalacOptions += sourceMapSetting.value,
   scalacOptions ++= scalaVerDependent {
     case (2, _) => "-P:scalajs:nowarnGlobalExecutionContext"
-    case (3, _) => "-scalajs:nowarnGlobalExecutionContext"
   }.value
 )
 
