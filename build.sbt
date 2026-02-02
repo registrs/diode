@@ -8,8 +8,8 @@ ThisBuild / scalafmtOnCompile := true
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-ThisBuild / scalaVersion       := "2.13.15"
-ThisBuild / crossScalaVersions := Seq("2.13.15", "3.1.3")
+ThisBuild / scalaVersion       := "2.13.17"
+ThisBuild / crossScalaVersions := Seq("2.13.17", "3.1.3")
 
 val commonSettings = Seq(
   scalacOptions := Seq(
@@ -147,7 +147,7 @@ lazy val diodeReact: Project = project
   .settings(
     name := "diode-react",
     libraryDependencies ++= Seq(
-      "com.github.japgolly.scalajs-react" %%% "core" % "2.1.1"
+      "com.github.japgolly.scalajs-react" %%% "core" % "3.0.0"
     )
   )
   .dependsOn(diode.js)
