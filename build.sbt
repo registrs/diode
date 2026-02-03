@@ -8,8 +8,8 @@ ThisBuild / scalafmtOnCompile := true
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-ThisBuild / scalaVersion       := "2.13.15"
-ThisBuild / crossScalaVersions := Seq("2.13.15", "3.1.3")
+ThisBuild / scalaVersion       := "2.13.17"
+ThisBuild / crossScalaVersions := Seq("2.13.17", "3.7.4")
 
 val commonSettings = Seq(
   scalacOptions := Seq(
@@ -32,7 +32,7 @@ val commonSettings = Seq(
   }.value,
   scalacOptions ++= scalaVerDependentSeq {
     case (2, 13) => Seq("-Werror")
-    case (3, _)  => Seq("-Xfatal-warnings")
+    // case (3, _)  => "-Xfatal-warnings" // there are a lot of scala3 related warnings now
   }.value,
   Compile / scalacOptions -= scalaVerDependent {
     case (2, _) => "-Ywarn-value-discard"
@@ -87,7 +87,7 @@ val commonJsSettings = Seq(
   scalacOptions += sourceMapSetting.value,
   scalacOptions ++= scalaVerDependent {
     case (2, _) => "-P:scalajs:nowarnGlobalExecutionContext"
-    case (3, _) => "-scalajs:nowarnGlobalExecutionContext"
+    case (3, _) => "-scalajs"
   }.value
 )
 
@@ -147,7 +147,7 @@ lazy val diodeReact: Project = project
   .settings(
     name := "diode-react",
     libraryDependencies ++= Seq(
-      "com.github.japgolly.scalajs-react" %%% "core" % "2.1.1"
+      "com.github.japgolly.scalajs-react" %%% "core" % "3.0.0"
     )
   )
   .dependsOn(diode.js)

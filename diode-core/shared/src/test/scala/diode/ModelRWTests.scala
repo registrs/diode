@@ -96,7 +96,7 @@ object ModelRWTests extends TestSuite {
         val rv1 = r1.value
         // normal zoomed values change reference on each call
         assert(rv1 ne r1.value)
-        val rm1  = cr.map((c: C) => c.s)
+        val rm1: ModelR[ModelOpt, Option[String]] = cr.map((c: C) => c.s)
         val rmi1 = mr.zoomMap(_.c)(_.i)
         // mapped values maintain reference
         assert(rm1.value eq rm1.value)
@@ -117,7 +117,7 @@ object ModelRWTests extends TestSuite {
         var m   = ModelOpt(1.0f, Some(C(4242, "some", Some(A(66, "deep")))))
         val mr  = new RootModelR(m)
         val cr  = mr.zoomFlatMap(_.c)(_.o)
-        val crs = cr.map((a: A) => a.s)
+        val crs: ModelR[ModelOpt, Option[String]] = cr.map((a: A) => a.s)
         val v1  = crs.value
         println(v1)
         assert(v1 eq crs.value)
